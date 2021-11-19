@@ -2,18 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import Menu from './Menu';
 
-const HeaderContiner = styled.header`
+const HeaderContainer = styled.header`
   width: 100%;
-  height: 120px;
-  color: ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.navBgColor};
+  height: 70px;
+  color: ${({ theme }) => theme.color};
+  background-color: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
-const Header = () => {
+const Header = ({ showLogin, setShowLogin, showSignup, setShowSignup }) => {
   return (
-    <HeaderContiner>
-      <Menu />
-    </HeaderContiner>
+    <>
+      <HeaderContainer>
+        <Menu
+          showLogin={showLogin}
+          setShowLogin={setShowLogin}
+          showSignup={showSignup}
+          setShowSignup={setShowSignup}
+        />
+      </HeaderContainer>
+    </>
   );
 };
 

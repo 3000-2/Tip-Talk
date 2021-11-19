@@ -5,14 +5,11 @@ span,
 applet,
 object,
 iframe,
-h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-p,
-blockquote,
 pre,
 a,
 abbr,
@@ -20,10 +17,8 @@ acronym,
 address,
 big,
 cite,
-code,
 del,
 dfn,
-em,
 img,
 ins,
 kbd,
@@ -32,21 +27,15 @@ s,
 samp,
 small,
 strike,
-strong,
 sub,
 sup,
 tt,
 var,
 b,
-u,
 i,
-center,
 dl,
 dt,
 dd,
-ol,
-ul,
-li,
 fieldset,
 form,
 label,
@@ -86,7 +75,26 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+center,
+h1,
+p,
+ul,
+li,
+ol {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+ul {
+  list-style-position: inside;
+}
+ol {
+  list-style-position: inside;
+}
+input {
+  outline: none;
+}
+
 article,
 aside,
 details,
@@ -103,16 +111,9 @@ section {
 body {
   line-height: 1;
 }
-ol,
-ul {
-  list-style: none;
-}
-blockquote,
 q {
   quotes: none;
 }
-blockquote:before,
-blockquote:after,
 q:before,
 q:after {
   content: '';
@@ -122,31 +123,54 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 @font-face {
-  font-family: 'SDSamliphopangche_Outline';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff')
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
     format('woff');
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
 }
+@keyframes scale {
+  from {
+    transform: scale(0.3);
+    opacity: 0.3;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
-@font-face {
-  font-family: 'HangeulNuri-Bold';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/HangeulNuri-Bold.woff')
-    format('woff');
-  font-weight: normal;
-  font-style: normal;
+@keyframes loading {
+  0% {
+    transform: translateY(0%);
+  }
+
+  8% {
+    transform: translateY(-20%);
+  }
+
+  16% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Pretendard-Regular', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-  width: 100vw;
 }
 
 button:hover {

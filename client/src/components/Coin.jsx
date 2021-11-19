@@ -5,30 +5,55 @@ import {
   faSun,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
-import { Color_4 } from '../styles/common';
+import { Color_3 } from '../styles/common';
 
-const CoinForm = styled.div`
+export const CoinForm = styled.div`
   display: flex;
-  position: absolute;
-  color: white;
-  top: ${({ position }) => (position.bottom ? 'none' : '150px')};
+  position: fixed;
+  color: ${Color_3};
+  top: ${({ position }) => (position.bottom ? 'none' : '100px')};
   bottom: ${({ position }) => (position.bottom ? position.bottom : 'none')};
   left: ${({ position }) => (position.right ? 'none' : '40px')};
   right: ${({ position }) => (position.right ? position.right : 'none')};
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: ${Color_4};
+  background-color: ${({ theme }) => theme.navBgColor};
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
   justify-content: center;
   align-items: center;
+  transition: 0.2s;
   z-index: 10;
   :hover {
     cursor: pointer;
+    color: ${({ theme }) => theme.navBgColor};
+    background-color: ${Color_3};
+  }
+  @media ${({ theme }) => theme.size.mobile} {
+    display: none;
   }
 `;
 
-export const Coin = ({ mode, darkMode, setDarkMode, ...position }) => {
+export const Coin = ({
+  mode,
+  darkMode,
+  setDarkMode,
+  scrollRef,
+  ...position
+}) => {
+  const history = useHistory();
+  const scrollToTop = () => {
+    scrollRef.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
+  };
+
   const getStyle = () => {
     switch (mode) {
       case 'reply':
@@ -45,11 +70,12 @@ export const Coin = ({ mode, darkMode, setDarkMode, ...position }) => {
   const handleEvent = () => {
     switch (mode) {
       case 'reply':
+        history.goBack();
         break;
       case 'up':
+        scrollToTop();
         break;
       case 'light':
-        console.log('ddd');
         if (darkMode) {
           localStorage.removeItem('darkmode');
         } else {
